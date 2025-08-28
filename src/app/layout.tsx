@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "geist/font";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -14,15 +14,15 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Dream-Sky-Tech",
-  description:
+   description:
     "Dream-Sky-Tech offers expert web development, mobile app development, and custom IT solutions for startups and enterprises. Boost your digital presence with scalable, secure, and innovative technology. Contact us today for free consultation!",
 };
 
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
   return (
     <html lang="en">
       <body
