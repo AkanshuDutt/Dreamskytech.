@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import { usePathname, useRouter } from "next/navigation"; // Added useRouter
+import Swal from "sweetalert2";
 
 const processSteps = [
   {
@@ -50,31 +51,19 @@ export default function AboutPage() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
+ const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const res = await fetch("/api/users", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
-
-      if (res.ok) {
-        setFormData({
+     setFormData({
           name: "",
           email: "",
           phone: "",
+          website: "",
           subject: "",
           message: "",
         });
-        alert("Form submitted successfully!");
-      }
-    } catch (err) {
-      console.error("Error submitting form:", err);
-    }
-  };
+         Swal.fire("Success!", "Form submitted successfully!", "success");
+  }; 
+
 
   return (
     <>

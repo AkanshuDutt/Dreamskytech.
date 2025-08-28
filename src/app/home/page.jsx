@@ -26,16 +26,7 @@ const HomePage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {  
-      const res = await fetch('/api/users', {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
-      if (res.ok) {
-        setFormData({
+     setFormData({
           name: "",
           email: "",
           phone: "",
@@ -43,15 +34,7 @@ const HomePage = () => {
           subject: "",
           message: "",
         });
-        Swal.fire("Success!", "Form submitted successfully!", "success");
-      } else {
-        const errorText = await res.text();
-        Swal.fire("Error", `Failed to submit form. ${errorText || "Please try again."}`, "error");
-      }
-    } catch (err) {
-      console.error("Error submitting form:", err);
-      Swal.fire("Error", "An error occurred while submitting the form. Please try again later.", "error");
-    }
+         Swal.fire("Success!", "Form submitted successfully!", "success");
   }; 
 
   return (

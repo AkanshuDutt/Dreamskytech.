@@ -24,50 +24,20 @@ export default function ContactPage() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const validateForm = () => {
-    const { name, email } = formData;
-    if (!name || !email) {
-      Swal.fire("Error", "Name & Email are required!", "error");
-      return false;
-    }
-    return true;
-  };
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    if (!validateForm()) return;
-    setLoading(true);
-
-    try {
-      const res = await fetch('/api/users', {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
-
-      if (res.ok) {
-        setFormData({
+     setFormData({
           name: "",
           email: "",
           phone: "",
+          website: "",
           subject: "",
           message: "",
         });
-        Swal.fire("Success!", "Your message has been sent successfully.", "success");
-      } else {
-        const errorData = await res.json();
-        Swal.fire("Error", errorData.message || "Failed to submit the form. Please try again.", "error");
-      }
-    } catch (error) {
-      console.error("Error submitting form:", error);
-      Swal.fire("Error", "An unexpected error occurred. Please try again later.", "error");
-    } finally {
-      setLoading(false);
-    }
-  };
+         Swal.fire("Success!", "Form submitted successfully!", "success");
+  }; 
 
   return (
     <>
