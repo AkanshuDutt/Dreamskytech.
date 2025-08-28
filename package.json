@@ -5,15 +5,10 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
-<<<<<<< HEAD
     "start": "node server.js",
     "lint": "eslint",
   "postinstall": "prisma generate"
     
-=======
-    "start": "next start",
-    "lint": "eslint"
->>>>>>> cce4cc9d388146be53967fba780be705e50848d2
   },
   "dependencies": {
     "@prisma/client": "^5.12.0",
